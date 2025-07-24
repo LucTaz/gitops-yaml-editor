@@ -1,0 +1,109 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Application Configuration",
+  "description": "Configuration schema for a sample application",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "title": "Application Name",
+      "description": "The name of your application",
+      "minLength": 1
+    },
+    "version": {
+      "type": "string",
+      "title": "Version",
+      "description": "Semantic version number",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "default": "1.0.0"
+    },
+    "environment": {
+      "type": "string",
+      "title": "Environment",
+      "description": "Deployment environment",
+      "enum": ["development", "staging", "production"],
+      "default": "development"
+    },
+    "database": {
+      "type": "object",
+      "title": "Database Configuration",
+      "properties": {
+        "host": {
+          "type": "string",
+          "title": "Database Host",
+          "format": "uri",
+          "default": "localhost"
+        },
+        "port": {
+          "type": "integer",
+          "title": "Database Port",
+          "minimum": 1,
+          "maximum": 65535,
+          "default": 5432
+        },
+        "name": {
+          "type": "string",
+          "title": "Database Name",
+          "minLength": 1
+        },
+        "ssl": {
+          "type": "boolean",
+          "title": "Enable SSL",
+          "default": false
+        }
+      },
+      "required": ["host", "port", "name"]
+    },
+    "features": {
+      "type": "array",
+      "title": "Enabled Features",
+      "description": "List of features to enable in the application",
+      "items": {
+        "type": "string",
+        "title": "Feature Name"
+      },
+      "default": []
+    },
+    "logging": {
+      "type": "object",
+      "title": "Logging Configuration",
+      "properties": {
+        "level": {
+          "type": "string",
+          "title": "Log Level",
+          "enum": ["debug", "info", "warn", "error"],
+          "default": "info"
+        },
+        "file": {
+          "type": "string",
+          "title": "Log File Path",
+          "description": "Path to the log file (optional)"
+        }
+      },
+      "required": ["level"]
+    },
+    "contact": {
+      "type": "object",
+      "title": "Contact Information",
+      "properties": {
+        "email": {
+          "type": "string",
+          "title": "Contact Email",
+          "format": "email"
+        },
+        "website": {
+          "type": "string",
+          "title": "Website URL",
+          "format": "uri"
+        }
+      }
+    },
+    "description": {
+      "type": "string",
+      "title": "Description",
+      "description": "Long description of the application",
+      "format": "textarea"
+    }
+  },
+  "required": ["name", "version", "environment", "database"]
+}
