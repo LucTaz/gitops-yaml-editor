@@ -28,7 +28,7 @@ class GitOpsYAMLEditor {
             }
             
             this.schema = await response.json();
-            this.validator = new Ajv({allErrors: true}).compile(this.schema);
+            this.validator = new window.Ajv({allErrors: true}).compile(this.schema);
             
             this.displaySchemaInfo();
             this.generateForm();
