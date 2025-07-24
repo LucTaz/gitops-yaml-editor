@@ -1,0 +1,22 @@
+dataContractSpecification: 0.9.3
+id: 1234
+info:
+  title: My data contract
+  version: 1.0.0
+  description: asd
+  owner: asd
+  contact:
+    name: lucas
+    email: lucas@example.com
+servers:
+  production:
+    type: s3
+    location: s3://test
+models:
+  mymodel:
+    description: some description
+    type: table
+    fields:
+      test_field:
+        description: Field description
+        type: string
