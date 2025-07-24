@@ -6,17 +6,24 @@ info:
   description: asd
   owner: asd
   contact:
-    name: lucas
+    name: lucas mand
     email: lucas@example.com
 servers:
   production:
     type: s3
-    location: s3://test
+    location: s3
 models:
-  mymodel:
-    description: some description
+  my table123:
+    description: Data model
     type: table
     fields:
-      test_field:
+      field:
+        description: Field description
+        type: string
+  another table:
+    description: Data model
+    type: table
+    fields:
+      with another field:
         description: Field description
         type: string
